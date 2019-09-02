@@ -102,10 +102,6 @@ When('I book an appointment', async function () {
 When('I select {string} from the expereince dropdown', async function (experience) {
     const experienceSelect = Selector('#g2599-experienceinyears').with({ boundTestRun: testController });
     const experienceOption = experienceSelect.find('option').with({ boundTestRun: testController });
-
-    await testController
-        .click(experienceSelect)
-        .click(experienceOption.withText(experience))
 });
 
 
