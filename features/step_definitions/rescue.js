@@ -38,6 +38,36 @@ Then('I click the submit button', async function () {
     await this.addScreenshotToReport();
 });
 
+When('I verify menus exist and content appears on subpages', async function (name) {
+    
+    //navigatsioon
+    await testcontroller.expect(rescuePage.rescue.navBar().visible).ok();
+    
+    //alammenüüde element
+    await testcontroller.expect(rescuePage.rescue.subMenuElement().visible).ok();
+    
+    //alamlehed ja sisu
+    await testcontroller.expect(rescuePage.rescue.menuItemDepartment().visible).ok();
+    await testController.expect(rescuePage.rescue.subMenuItem().innerText).contains(name)
+    await testController.click(rescuePage.rescue.subMenuItem()).wait(5000);
+    
+    await testcontroller.expect(rescuePage.rescue.menuItemSafety().visible).ok();
+    await testController.expect(rescuePage.rescue.SafetysubMenuItem().innerText).contains(name)
+    await testController.click(rescuePage.rescue.SafetysubMenuItem()).wait(5000);
+    
+    await testcontroller.expect(rescuePage.rescue.menuItemApprove().visible).ok(); 
+    await testController.expect(rescuePage.rescue.ApprovesubMenuItem().innerText).contains(name)
+    await testController.click(rescuePage.rescue.ApprovesubMenuItem()).wait(5000);
+    
+    await testcontroller.expect(rescuePage.rescue.menuItemAbout().visible).ok();
+    await testController.expect(rescuePage.rescue.AboutsubMenuItem().innerText).contains(name)
+    await testController.click(rescuePage.rescue.AboutsubMenuItem()).wait(5000);
+
+    await testcontroller.expect(rescuePage.rescue.menuItemCareers().visible).ok();
+    await testController.expect(rescuePage.rescue.CareerssubMenuItem().innerText).contains(name)
+    await testController.click(rescuePage.rescue.CareersubMenuItem()).wait(5000);
+});
+
 When('I see {string} in the name field', async function (name) {
 
     await testController.expect(rescuePage.rescue.subMenuItem().innerText).contains(name)
